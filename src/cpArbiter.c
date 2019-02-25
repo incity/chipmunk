@@ -233,6 +233,30 @@ cpArbiterApplyImpulse(cpArbiter *arb, cpFloat eCoef)
 {
 	cpBody *a = arb->a->body;
 	cpBody *b = arb->b->body;
+		cpContact *con;
+		cpVect n;
+		cpVect r1;
+		cpVect r2;
+		cpVect vb1;
+		cpVect vb2;
+		cpFloat vbn;
+		cpFloat jbn;
+		cpFloat jbnOld;
+		cpVect vr;
+		cpFloat vrn;
+		cpFloat jn;
+		cpFloat jnOld;
+		cpFloat vrt;
+		
+		// Calculate and clamp the friction impulse.
+		cpFloat jtMax = arb->u*con->jnAcc;
+		cpFloat jt = -vrt*con->tMass;
+		cpFloat jtOld = con->jtAcc;
+		con->jtAcc = cpfclamp(jtOld + jt, -jtMax, jtMax);
+		jt = con->jtAcc - jtOld;
+		
+		// Apply the final impulse.
+		apply_impulses(a, b, r1, r2, cpvrotate(n, cpv(jn, jt)));
 
 	for(int i=0; i<arb->numContacts; i++){
 		cpContact *con = &arb->contacts[i];
