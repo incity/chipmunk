@@ -4,12 +4,15 @@ cmake_policy(SET CMP0001 NEW) # don't use MAKE_BACKWARDS_COMPATIBILITY but polic
 project(chipmunk)
 
 # to change the prefix, run cmake with the parameter:
-#   -D CMAKE_INSTALL_PREFIX=/my/prefix
+SET(CMAKE_INSTALL_PREFIX "/home/suyc/V3S/minigui-git/output")
 
 # to change the build type, run cmake with the parameter:
 #   -D CMAKE_BUILD_TYPE=<build-type>
 # run "cmake --help-variable CMAKE_BUILD_TYPE" for details
 set(CMAKE_BUILD_TYPE Release)
+SET(CMAKE_SYSTEM_NAME Linux)
+SET(CMAKE_C_COMPILER "$ENV{ANDROID_BUILD_TOP}/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.6/bin/arm-linux-androideabi-gcc")
+SET(CMAKE_C_FLAGS "-O3 -I$ENV{ANDROID_BUILD_TOP}/hardware/libhardware_legacy/include -I$ENV{ANDROID_BUILD_TOP}/hardware/libhardware_legacy/include/hardware_legacy -I$ENV{ANDROID_BUILD_TOP}/bionic/libc/kernel/common/linux/can -I$ENV{ANDROID_BUILD_TOP}/bionic/libm/include -I$ENV{ANDROID_BUILD_TOP}/bionic/libc/include -I$ENV{ANDROID_BUILD_TOP}/bionic/libc/arch-arm/include -I$ENV{ANDROID_BUILD_TOP}/bionic/libstdc++/include -I$ENV{ANDROID_BUILD_TOP}/bionic/libc/kernel/common -I$ENV{ANDROID_BUILD_TOP}/bionic/libc/kernel/arch-arm -L$ENV{ANDROID_PRODUCT_OUT}/system/lib -nostdlib -lm -lstdc++ -lc -ldl -Bdynamic -Wl,-dynamic-linker,/system/bin/linker")
 
 # other options for the build, you can i.e. activate the ruby bindings by passing
 #   -D BUILD_RUBY_EXT=ON
