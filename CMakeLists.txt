@@ -4,7 +4,7 @@ cmake_policy(SET CMP0001 NEW) # don't use MAKE_BACKWARDS_COMPATIBILITY but polic
 project(chipmunk)
 
 # to change the prefix, run cmake with the parameter:
-SET(CMAKE_INSTALL_PREFIX "/home/suyc/V3S/minigui-git/output")
+SET(CMAKE_INSTALL_PREFIX "/home/suyc/V3S/camdroid/device/softwinner/tiger-cdr/app/XiaoE/3rd-party")
 
 # to change the build type, run cmake with the parameter:
 #   -D CMAKE_BUILD_TYPE=<build-type>
